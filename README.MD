@@ -1,22 +1,14 @@
-# Huawei Cloud update FunctionGraph script
-
+# Huawei Cloud Update FunctionGraph Script
+---
 ## Description
 
-This Bash script is designed to automate the deployment of a function to the Huawei Cloud FunctionGraph service. The script does the following:
-
-1. Checks if all required environment variables are set.
-2. Downloads metadata if not found.
-3. Configures the `hcloud` environment.
-4. Fetches dependency IDs.
-5. Compresses the function folder into a zip file.
-6. Uploads the zip file to a temporary OBS bucket.
-7. Updates the function code and configuration.
+This Bash script is designed to automate the deployment of a function to the Huawei Cloud FunctionGraph service. The script performs a variety of tasks such as environment setup, dependency management, and function deployment.
 
 ## Requirements
 
-1. `hcloud` CLI installed.
+1. `(koocli)[https://support.huaweicloud.com/intl/en-us/qs-hcli/hcli_02_003_02.html]` CLI installed.
 2. `jq` for JSON manipulation.
-3. `obsutil` for Huawei OBS operations.
+3. `(obsutil)[https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0003.html]` for Huawei OBS operations.
 4. `expect` for automating interactive tasks.
 5. `zip` for compressing the function folder.
 6. A running Huawei Cloud account and an existing project.
@@ -35,21 +27,29 @@ The script expects the following environment variables to be set:
 - `MEMORY_SIZE`: The memory size allocated for the function.
 - `RUNTIME`: The runtime environment for the function (e.g., Python3.6).
 - `TIMEOUT`: The timeout for the function execution.
-- `AGENCY_NAME`: The name of the agency role with permissions.
 - `FUNCTIONGRAPH_*`: Environment variables starting with "FUNCTIONGRAPH_" will be used as function configuration parameters.
+
+**Optional:**
+- `AGENCY_NAME`: The name of the agency role with permissions (optional).
 
 ## How to Use
 
-1. **Clone this repository:**
+1. **Download the script:**
+
+   Use `curl` or `wget` to download the raw script:
 
    ```bash
-   git clone https://github.com/Buronn/huaweicloud-update-functiongraph-script
+   curl -O https://raw.githubusercontent.com/Buronn/huaweicloud-update-functiongraph-script/main/entrypoint.sh
+   ```
+   Or
+   ```bash
+   wget https://raw.githubusercontent.com/Buronn/huaweicloud-update-functiongraph-script/main/entrypoint.sh
    ```
 
-2. **Navigate to the repository:**
+2. **Make the script executable:**
 
    ```bash
-   cd path/to/repo
+   chmod +x entrypoint.sh
    ```
 
 3. **Set environment variables:**
@@ -80,16 +80,8 @@ The script expects the following environment variables to be set:
 
 4. **Run the script:**
 
-   Make sure the script is executable:
-
    ```bash
-   chmod +x path/to/script.sh
-   ```
-
-   Then run it:
-
-   ```bash
-   ./path/to/script.sh
+   ./entrypoint.sh
    ```
 
 ## Troubleshooting
@@ -97,6 +89,14 @@ The script expects the following environment variables to be set:
 - Make sure you have all required CLI tools installed (`hcloud`, `jq`, `obsutil`, `expect`, `zip`).
 - Ensure all environment variables are set before running the script.
 - Check the log messages carefully to diagnose any issues.
+
+## Contribute
+
+We welcome contributions! If you find a bug or would like to propose a new feature, please feel free to open an issue or submit a pull request. 
+
+- **Report Bugs:** If you find any issues or bugs, please report them by opening a new issue on the GitHub repository.
+- **Feature Requests:** If you have an idea for a new feature, feel free to open an issue describing the feature and why it would be useful.
+- **Pull Requests:** Contributions via pull requests are highly appreciated.
 
 ## License
 
