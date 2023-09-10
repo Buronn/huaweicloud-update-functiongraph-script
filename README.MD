@@ -85,7 +85,7 @@ The script expects the following environment variables to be set:
 
 ## Troubleshooting
 
-- Make sure you have all required CLI tools installed (`hcloud`, `jq`, `obsutil`, `expect`, `zip`).
+- Make sure you have all required CLI tools installed (`koocli`, `jq`, `obsutil`, `expect`, `zip`).
 - Ensure all environment variables are set before running the script.
 - Check the log messages carefully to diagnose any issues.
 
