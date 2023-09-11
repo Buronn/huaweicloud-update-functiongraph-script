@@ -6,7 +6,8 @@ This Bash script is designed to automate the UpdateCode and UpdateConfig of a fu
 ## Requirements
 
 **Docker 🐳:**
-- Docker and Docker Compose installed.
+1. Docker and Docker Compose installed.
+2. A running Huawei Cloud account and an existing project.
 
 **For Manual Installing:**
 1. [koocli](https://support.huaweicloud.com/intl/en-us/qs-hcli/hcli_02_003_02.html) CLI installed.
