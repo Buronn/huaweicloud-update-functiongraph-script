@@ -22,20 +22,20 @@ This Bash script is designed to automate the UpdateCode and UpdateConfig of a fu
 ## Environment Variables
 
 
-| Variable            | Required  | Example                  | Description                                                              |
+| Variable            | Type  | Example                  | Description                                                              |
 |---------------------|-----------|--------------------------|--------------------------------------------------------------------------|
-| `FUNC_NAME`         | Yes       | `myFunction`             | The name of the function.                                                 |
-| `REGION`            | Yes       | `la-south-2`              | The region where the function resides.                                    |
-| `PROJECT_ID`        | Yes       | `123456789`              | Your Huawei Cloud Project ID.                                             |
-| `DEPENDENCIES`      | Yes       | `lib1,lib2,lib3`         | A comma-separated list of private dependencies the function needs.                |
-| `ACCESS_KEY`        | Yes       | `AbcD1234EfgH`           | Your Huawei Cloud access key.                                             |
-| `SECRET_KEY`        | Yes       | `XyZ0987WvU`             | Your Huawei Cloud secret key.                                             |
-| `HANDLER`           | Yes       | `index.py`           | The function handler.                                                     |
-| `MEMORY_SIZE`       | Yes       | `256`                    | The memory size allocated for the function.                               |
-| `RUNTIME`           | Yes       | `Python3.6`              | The runtime environment for the function (e.g., Python3.6).               |
-| `TIMEOUT`           | Yes       | `30`                     | The timeout for the function execution.                                   |
-| `FUNCTIONGRAPH_*`   | No        | `FUNCTIONGRAPH_DEBUG=1` `FUNCTIONGRAPH_PORT=3000`  | Environment variables starting with "FUNCTIONGRAPH_" will be used as function environment parameters.|
-| `AGENCY_NAME`       | No        | `MyAgency`               | The name of the agency role with permissions (optional).                  |
+| `FUNC_NAME`         | Mandatory       | `myFunction`             | The name of the function.                                                 |
+| `REGION`            | Mandatory       | `la-south-2`              | The region where the function resides.                                    |
+| `PROJECT_ID`        | Mandatory       | `123456789`              | Your Huawei Cloud Project ID.                                             |
+| `DEPENDENCIES`      | Mandatory       | `lib1,lib2,lib3`         | A comma-separated list of private dependencies the function needs.                |
+| `ACCESS_KEY`        | Mandatory       | `AbcD1234EfgH`           | Your Huawei Cloud access key.                                             |
+| `SECRET_KEY`        | Mandatory       | `XyZ0987WvU`             | Your Huawei Cloud secret key.                                             |
+| `HANDLER`           | Mandatory       | `index.py`           | The function handler.                                                     |
+| `MEMORY_SIZE`       | Mandatory       | `256`                    | The memory size allocated for the function.                               |
+| `RUNTIME`           | Mandatory       | `Python3.6`              | The runtime environment for the function (e.g., Python3.6).               |
+| `TIMEOUT`           | Mandatory       | `30`                     | The timeout for the function execution.                                   |
+| `FUNCTIONGRAPH_*`   | Optional        | `FUNCTIONGRAPH_DEBUG=1` `FUNCTIONGRAPH_PORT=3000`  | Environment variables starting with "FUNCTIONGRAPH_" will be used as function environment parameters.|
+| `AGENCY_NAME`       | Optional        | `MyAgency`               | The name of the agency role with permissions (optional).                  |
 
 
 ## Preparation
