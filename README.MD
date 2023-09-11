@@ -1,7 +1,7 @@
 # Huawei Cloud Update FunctionGraph Script
 ## Description
 
-This Bash script is designed to automate the deployment of a function to the Huawei Cloud FunctionGraph service. The script performs a variety of tasks such as environment setup, dependency management, and function deployment. It can also be run using Docker Compose.
+This Bash script is designed to automate the UpdateCode and UpdateConfig of a function to the Huawei Cloud FunctionGraph service. The script performs a variety of tasks such as environment setup, dependency management, and function deployment. It can also be run using Docker Compose.
 
 ## Requirements
 
