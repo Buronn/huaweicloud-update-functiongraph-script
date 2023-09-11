@@ -35,7 +35,7 @@ This Bash script is designed to automate the UpdateCode and UpdateConfig of a fu
 | `RUNTIME`           | Mandatory       | `Python3.6`              | The runtime environment for the function (e.g., Python3.6).               |
 | `TIMEOUT`           | Mandatory       | `30`                     | The timeout for the function execution.                                   |
 | `FUNCTIONGRAPH_*`   | Optional        | `FUNCTIONGRAPH_DEBUG=1` `FUNCTIONGRAPH_PORT=3000`  | Environment variables starting with "FUNCTIONGRAPH_" will be used as function environment parameters.|
-| `AGENCY_NAME`       | Optional        | `MyAgency`               | The name of the agency role with permissions (optional).                  |
+| `AGENCY_NAME`       | Optional        | `MyAgency`               | The name of the agency role with permissions.                  |
 
 
 ## Preparation
