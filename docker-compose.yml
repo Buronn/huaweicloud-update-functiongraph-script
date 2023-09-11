@@ -7,7 +7,7 @@ services:
     image: fg-auto-update
     container_name: fg-auto-update
     volumes:
-      - ./function:/app/function
+      - ./function:/app/function # This is the folder where your code is located
       - ./entrypoint.sh:/entrypoint.sh
     environment:
       - ACCESS_KEY=
