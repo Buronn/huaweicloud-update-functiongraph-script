@@ -31,6 +31,20 @@ The script expects the following environment variables to be set:
 **Optional:**
 - `AGENCY_NAME`: The name of the agency role with permissions (optional).
 
+## Preparation
+
+1. **Create `/app/function` directory:**
+
+    Create a directory called `/app/function` on your machine. This is where you should place your function code.
+
+    ```bash
+    mkdir -p /app/function
+    ```
+
+2. **Place function code:**
+
+    Your function code should reside within the `/app/function` directory. It will be zipped and uploaded as part of the deployment process.
+
 ## How to Use
 
 1. **Download the script:**
