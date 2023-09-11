@@ -1,7 +1,7 @@
 # Huawei Cloud Update FunctionGraph Script
 ## Description
 
-This Bash script is designed to automate the deployment of a function to the Huawei Cloud FunctionGraph service. The script performs a variety of tasks such as environment setup, dependency management, and function deployment.
+This Bash script is designed to automate the deployment of a function to the Huawei Cloud FunctionGraph service. The script performs a variety of tasks such as environment setup, dependency management, and function deployment. It can also be run using Docker Compose.
 
 ## Requirements
 
@@ -11,6 +11,9 @@ This Bash script is designed to automate the deployment of a function to the Hua
 4. `expect` for automating interactive tasks.
 5. `zip` for compressing the function folder.
 6. A running Huawei Cloud account and an existing project.
+
+**Optional for Docker 🐳:**
+- Docker and Docker Compose installed.
 
 ## Environment Variables
 
@@ -46,6 +49,8 @@ The script expects the following environment variables to be set:
     Your function code should reside within the `/app/function` directory. It will be zipped and uploaded as part of the deployment process.
 
 ## How to Use
+
+### Option 1: Run the script manually 🧰🔨
 
 1. **Download the script:**
 
@@ -97,15 +102,26 @@ The script expects the following environment variables to be set:
    ./entrypoint.sh
    ```
 
+### Option 2: Run with Docker Compose 🐳
+
+1. Make sure you have Docker Compose installed.
+2. Modify the `docker-compose.yml` and `example.env` files to suit your requirements.
+3. Run the script with Docker Compose:
+
+   ```bash
+   docker-compose up
+   ```
+
 ## Troubleshooting
 
 - Make sure you have all required CLI tools installed (`koocli`, `jq`, `obsutil`, `expect`, `zip`).
+- If using Docker Compose, ensure that Docker Compose is installed.
 - Ensure all environment variables are set before running the script.
 - Check the log messages carefully to diagnose any issues.
 
-## Contribute
+## Contribute 🤝
 
-We welcome contributions! If you find a bug or would like to propose a new feature, please feel free to open an issue or submit a pull request. 
+We welcome contributions! If you find a bug or would like to propose a new feature, please feel free to open an issue or submit a pull request.
 
 - **Report Bugs:** If you find any issues or bugs, please report them by opening a new issue on the GitHub repository.
 - **Feature Requests:** If you have an idea for a new feature, feel free to open an issue describing the feature and why it would be useful.
@@ -114,3 +130,7 @@ We welcome contributions! If you find a bug or would like to propose a new featu
 ## License
 
 This script is released under the MIT License.
+
+---
+
+This modified README now includes a section detailing how to run the script using Docker Compose. It also mentions that Docker Compose should be installed as an optional requirement.
