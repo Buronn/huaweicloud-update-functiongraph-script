@@ -29,7 +29,7 @@ The script expects the following environment variables to be set:
 - `MEMORY_SIZE`: The memory size allocated for the function.
 - `RUNTIME`: The runtime environment for the function (e.g., Python3.6).
 - `TIMEOUT`: The timeout for the function execution.
-- `FUNCTIONGRAPH_*`: Environment variables starting with "FUNCTIONGRAPH_" will be used as function configuration parameters.
+- `FUNCTIONGRAPH_*`: Environment variables starting with "FUNCTIONGRAPH_" will be used as function environment parameters.
 
 **Optional:**
 - `AGENCY_NAME`: The name of the agency role with permissions (optional).
