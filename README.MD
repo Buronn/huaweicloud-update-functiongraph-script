@@ -8,7 +8,7 @@ This Bash script is designed to automate the UpdateCode and UpdateConfig of a fu
 **Docker 🐳:**
 - Docker and Docker Compose installed.
 
-**Manual Install:**
+**For Manual Installing:**
 1. [koocli](https://support.huaweicloud.com/intl/en-us/qs-hcli/hcli_02_003_02.html) CLI installed.
 2. `jq` for JSON manipulation.
 3. [obsutil](https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0003.html) for Huawei OBS operations.
