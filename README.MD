@@ -1,4 +1,23 @@
 # Huawei Cloud Update FunctionGraph Script
+```mermaid
+sequenceDiagram
+    participant Script
+    participant OBS
+    participant FunctionGraph
+    participant Utils
+
+    Script->>Script: Check Required Variables
+    Script->>Utils: Call error_exit (if vars not set)
+    Utils-->>Script: Error Status (if any)
+    Script->>OBS: Upload Function to OBS
+    OBS-->>Script: Upload file operation status
+    Script->>FunctionGraph: Update Function Code in FunctionGraph
+    FunctionGraph-->>Script: Update Code operation response
+    Script->>OBS: Cleanup OBS
+    OBS-->>Script: File and Folder deleted correctly
+    Script->>FunctionGraph: Update Function Config in FunctionGraph
+    FunctionGraph-->>Script: Operation Response
+```
 ## Description
 
 This Bash script is designed to automate the UpdateCode and UpdateConfig of a function to the Huawei Cloud FunctionGraph service. The script performs a variety of tasks such as environment setup, dependency management, and function deployment. It can also be run using Docker Compose.
