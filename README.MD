@@ -5,6 +5,10 @@ This Bash script is designed to automate the UpdateCode and UpdateConfig of a fu
 
 ## Requirements
 
+**Docker 🐳:**
+- Docker and Docker Compose installed.
+
+**Manual Install:**
 1. [koocli](https://support.huaweicloud.com/intl/en-us/qs-hcli/hcli_02_003_02.html) CLI installed.
 2. `jq` for JSON manipulation.
 3. [obsutil](https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0003.html) for Huawei OBS operations.
@@ -12,8 +16,7 @@ This Bash script is designed to automate the UpdateCode and UpdateConfig of a fu
 5. `zip` for compressing the function folder.
 6. A running Huawei Cloud account and an existing project.
 
-**Optional for Docker 🐳:**
-- Docker and Docker Compose installed.
+
 
 ## Environment Variables
 
@@ -50,7 +53,17 @@ The script expects the following environment variables to be set:
 
 ## How to Use
 
-### Option 1: Run the script manually 🧰🔨
+### Option 1: Run with Docker Compose 🐳
+
+1. Make sure you have Docker Compose installed.
+2. Modify the `docker-compose.yml` and `example.env` files to suit your requirements.
+3. Run the script with Docker Compose:
+
+   ```bash
+   docker-compose up
+   ```
+
+### Option 2: Run the script manually 🧰🔨
 
 1. **Download the script:**
 
@@ -101,17 +114,6 @@ The script expects the following environment variables to be set:
    ```bash
    ./entrypoint.sh
    ```
-
-### Option 2: Run with Docker Compose 🐳
-
-1. Make sure you have Docker Compose installed.
-2. Modify the `docker-compose.yml` and `example.env` files to suit your requirements.
-3. Run the script with Docker Compose:
-
-   ```bash
-   docker-compose up
-   ```
-
 ## Troubleshooting
 
 - Make sure you have all required CLI tools installed (`koocli`, `jq`, `obsutil`, `expect`, `zip`).
