@@ -15,13 +15,13 @@ sequenceDiagram
     Script->>Script: Check Required Variables
     Script->>Utils: Call error_exit (if vars not set)
     Utils-->>Script: Error Status (if any)
-    Script->>OBS: Upload Function to OBS
+    Script->>OBS: Upload Function
     OBS-->>Script: Upload file operation status
-    Script->>FunctionGraph: Update Function Code in FunctionGraph
+    Script->>FunctionGraph: Update FunctionCode
     FunctionGraph-->>Script: Update Code operation response
-    Script->>OBS: Cleanup OBS
+    Script->>OBS: Cleanup
     OBS-->>Script: File and Folder deleted correctly
-    Script->>FunctionGraph: Update Function Config in FunctionGraph
+    Script->>FunctionGraph: Update FunctionConfig
     FunctionGraph-->>Script: Operation Response
 ```
 
