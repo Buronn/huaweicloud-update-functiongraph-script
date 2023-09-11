@@ -21,22 +21,22 @@ This Bash script is designed to automate the UpdateCode and UpdateConfig of a fu
 
 ## Environment Variables
 
-The script expects the following environment variables to be set:
 
-- `FUNC_NAME`: The name of the function.
-- `REGION`: The region where the function resides.
-- `PROJECT_ID`: Your Huawei Cloud Project ID.
-- `DEPENDENCIES`: A comma-separated list of dependencies the function needs.
-- `ACCESS_KEY`: Your Huawei Cloud access key.
-- `SECRET_KEY`: Your Huawei Cloud secret key.
-- `HANDLER`: The function handler.
-- `MEMORY_SIZE`: The memory size allocated for the function.
-- `RUNTIME`: The runtime environment for the function (e.g., Python3.6).
-- `TIMEOUT`: The timeout for the function execution.
-- `FUNCTIONGRAPH_*`: Environment variables starting with "FUNCTIONGRAPH_" will be used as function environment parameters.
+| Variable            | Required  | Example                  | Description                                                              |
+|---------------------|-----------|--------------------------|--------------------------------------------------------------------------|
+| `FUNC_NAME`         | Yes       | `myFunction`             | The name of the function.                                                 |
+| `REGION`            | Yes       | `la-south-2`              | The region where the function resides.                                    |
+| `PROJECT_ID`        | Yes       | `123456789`              | Your Huawei Cloud Project ID.                                             |
+| `DEPENDENCIES`      | Yes       | `lib1,lib2,lib3`         | A comma-separated list of private dependencies the function needs.                |
+| `ACCESS_KEY`        | Yes       | `AbcD1234EfgH`           | Your Huawei Cloud access key.                                             |
+| `SECRET_KEY`        | Yes       | `XyZ0987WvU`             | Your Huawei Cloud secret key.                                             |
+| `HANDLER`           | Yes       | `index.py`           | The function handler.                                                     |
+| `MEMORY_SIZE`       | Yes       | `256`                    | The memory size allocated for the function.                               |
+| `RUNTIME`           | Yes       | `Python3.6`              | The runtime environment for the function (e.g., Python3.6).               |
+| `TIMEOUT`           | Yes       | `30`                     | The timeout for the function execution.                                   |
+| `FUNCTIONGRAPH_*`   | No        | `FUNCTIONGRAPH_DEBUG=1` `FUNCTIONGRAPH_PORT=3000`  | Environment variables starting with "FUNCTIONGRAPH_" will be used as function environment parameters.|
+| `AGENCY_NAME`       | No        | `MyAgency`               | The name of the agency role with permissions (optional).                  |
 
-**Optional:**
-- `AGENCY_NAME`: The name of the agency role with permissions (optional).
 
 ## Preparation
 
