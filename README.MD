@@ -130,7 +130,3 @@ We welcome contributions! If you find a bug or would like to propose a new featu
 ## License
 
 This script is released under the MIT License.
-
----
-
-This modified README now includes a section detailing how to run the script using Docker Compose. It also mentions that Docker Compose should be installed as an optional requirement.
