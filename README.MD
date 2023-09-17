@@ -34,10 +34,9 @@ sequenceDiagram
 **For Manual Installing:**
 1. [koocli](https://support.huaweicloud.com/intl/en-us/qs-hcli/hcli_02_003_02.html) CLI installed.
 2. `jq` for JSON manipulation.
-3. [obsutil](https://support.huaweicloud.com/intl/en-us/utiltg-obs/obs_11_0003.html) for Huawei OBS operations.
-4. `expect` for automating interactive tasks.
-5. `zip` for compressing the function folder.
-6. A running Huawei Cloud account and an existing project.
+3. `expect` for automating interactive tasks.
+4. `zip` for compressing the function folder.
+5. A running Huawei Cloud account and an existing project.
 
 
 
@@ -49,7 +48,7 @@ sequenceDiagram
 | `FUNC_NAME`         | Mandatory       | `myFunction`             | The name of the function.                                                 |
 | `REGION`            | Mandatory       | `la-south-2`              | The region where the function resides.                                    |
 | `PROJECT_ID`        | Mandatory       | `123456789`              | Your Huawei Cloud Project ID.                                             |
-| `DEPENDENCIES`      | Mandatory       | `lib1,lib2,lib3`         | A comma-separated list of private dependencies the function needs.                |
+| `DEPENDENCIES`      | Mandatory       | `lib1,lib2,lib3`         | A comma-separated list of private dependencies the function needs. They must exist in your Huawei Cloud dependency list, for now take the first version of the dependency              |
 | `ACCESS_KEY`        | Mandatory       | `AbcD1234EfgH`           | Your Huawei Cloud access key.                                             |
 | `SECRET_KEY`        | Mandatory       | `XyZ0987WvU`             | Your Huawei Cloud secret key.                                             |
 | `HANDLER`           | Mandatory       | `index.py`           | The function handler.                                                     |
@@ -62,9 +61,9 @@ sequenceDiagram
 
 ## Preparation
 
-1. **Create `/app/function` directory:**
+1. **Create `function` directory:**
 
-    Create a directory called `/app/function` on your machine. This is where you should place your function code.
+    Create a directory called `function` on your machine. This is where you should place your function code.
 
     ```bash
     mkdir -p /app/function
@@ -139,7 +138,7 @@ sequenceDiagram
    ```
 ## Troubleshooting
 
-- Make sure you have all required CLI tools installed (`koocli`, `jq`, `obsutil`, `expect`, `zip`).
+- Make sure you have all required CLI tools installed (`koocli`, `jq`, `expect`, `zip`).
 - If using Docker Compose, ensure that Docker Compose is installed.
 - Ensure all environment variables are set before running the script.
 - Check the log messages carefully to diagnose any issues.
