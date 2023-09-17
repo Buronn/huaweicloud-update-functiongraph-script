@@ -42,7 +42,7 @@ sequenceDiagram
 |---------------------|-----------|--------------------------|--------------------------------------------------------------------------|
 | `FUNC_NAME`         | Mandatory       | `myFunction`             | The name of the function.                                                 |
 | `REGION`            | Mandatory       | `la-south-2`              | The region where the function resides.                                    |
-| `PROJECT_ID`        | Mandatory       | `123456789`              | Your Huawei Cloud Project ID.                                             |
+| `PROJECT`        | Mandatory       | `123456789`              | Your Huawei Cloud Project ID.                                             |
 | `DEPENDENCIES`      | Mandatory       | `lib1,lib2,lib3`         | A comma-separated list of private dependencies the function needs. They must exist in your Huawei Cloud dependency list, for now take the first version of the dependency              |
 | `ACCESS_KEY`        | Mandatory       | `AbcD1234EfgH`           | Your Huawei Cloud access key.                                             |
 | `SECRET_KEY`        | Mandatory       | `XyZ0987WvU`             | Your Huawei Cloud secret key.                                             |
