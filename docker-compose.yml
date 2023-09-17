@@ -7,7 +7,7 @@ services:
     image: fg-auto-update
     container_name: fg-auto-update
     volumes:
-      - ./function:/app/function # This is the folder where your code is located
+      - ./<your function folder>:/function 
     environment:
       - ACCESS_KEY=
       - SECRET_KEY=
