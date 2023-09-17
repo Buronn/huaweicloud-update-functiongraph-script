@@ -8,19 +8,14 @@ This Bash script is designed to automate the UpdateCode and UpdateConfig of a fu
 ```mermaid
 sequenceDiagram
     participant Script
-    participant OBS
     participant FunctionGraph
     participant Utils
 
     Script->>Script: Check Required Variables
     Script->>Utils: Call error_exit (if vars not set)
     Utils-->>Script: Error Status (if any)
-    Script->>OBS: Upload Function
-    OBS-->>Script: Upload file operation status
     Script->>FunctionGraph: Update FunctionCode
     FunctionGraph-->>Script: Update Code operation response
-    Script->>OBS: Cleanup
-    OBS-->>Script: File and Folder deleted correctly
     Script->>FunctionGraph: Update FunctionConfig
     FunctionGraph-->>Script: Operation Response
 ```
