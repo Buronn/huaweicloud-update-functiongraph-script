@@ -131,7 +131,7 @@ if ! command -v zip &> /dev/null; then
 fi
 
 # Compress the function folder
-cd function || error_exit "Failed to change directory to function."
+cd ${FUNCTION_FOLDER} || error_exit "Failed to change directory to function."
 rm -rf function.zip
 command_output=$(zip -r function.zip . -x *pycache*) || error_exit "Failed to compress function folder."
 debug "Compressing output: $command_output"
