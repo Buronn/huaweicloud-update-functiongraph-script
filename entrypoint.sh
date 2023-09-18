@@ -140,40 +140,82 @@ base64_zip=$(base64 -w 0 function.zip) || error_exit "Failed to create base64 en
 info_msg "${BLUE}Function folder compressed${NC}"
 
 # Upload the compressed function
-info_msg "${BLUE}Uploading function...${NC}"
+info_msg "${BLUE}Checking if function already exists...${NC}"
 
+function check_function_exists {
+  function_list_output=$(hcloud FunctionGraph ListFunctions --cli-region=${REGION} --project_id=${PROJECT_ID} 2>&1)
+  function_exists=$(echo "$function_list_output" | jq -r --arg FUNC_NAME "$FUNC_NAME" '.functions[] | select(.func_name == $FUNC_NAME) | .func_name')
 
-# Update the function code
-info_msg "${BLUE}Updating function code${NC}"
-FUNCTION_URN="urn:fss:$REGION:$PROJECT_ID:function:default:$FUNC_NAME:latest"
-
-command_output=$(hcloud FunctionGraph UpdateFunctionCode \
-        --cli-region=${REGION} \
-        --code_type="zip" \
-        --function_urn=${FUNCTION_URN} \
-        --project_id=${PROJECT_ID} \
-        --func_code.file="$base64_zip" \
-        --code_filename="function.zip" \
-        ${depend_version_list} 2>&1)
-
-debug "KooCLI UpdateFunctionCode Command:\n$command_output"
-# Check if the command was successful
-if [[ $? -ne 0 ]]; then
-  error_exit "Failed to update function code.\nFull output: $command_output"
-else
-  # Check if jq is installed to parse the error message
-  if command -v jq &> /dev/null; then
-    error_code=$(echo "$command_output" | jq -r '.error_code // empty' 2>/dev/null)
-    
-    if [[ ! -z "$error_code" ]]; then
-      error_msg=$(echo "$command_output" | jq -r '.error_msg // empty' 2>/dev/null)
-      error_exit "Failed to update function code.\n\tError Code: $error_code\n\tError Message: $error_msg"
-    else
-      info_msg "${BLUE}Function code updated."
-    fi
+  if [ "$function_exists" == "$FUNC_NAME" ]; then
+    info_msg "Function already exists."
+    return 0  
   else
-    info_msg "Function code updated (jq is not installed for additional error checking)."
+    info_msg "Function does not exist."
+    return 1 
   fi
+}
+
+# Check if Function already exists.
+check_function_exists
+if [ $? -eq 1 ]; then
+  info_msg "Creating new Function ${FUNC_NAME}..."
+  create_function_output=$(hcloud FunctionGraph CreateFunction \
+    --cli-region=${REGION} \
+    --code_type="zip" \
+    --func_name=${FUNC_NAME} \
+    --handler=${HANDLER} \
+    --memory_size=${MEMORY_SIZE} \
+    --package="default" \
+    --project_id=${PROJECT_ID} \
+    --runtime=${RUNTIME} \
+    --timeout=${TIMEOUT} \
+    --app_xrole=${AGENCY_NAME} \
+    --code_filename="function.zip" \
+    --func_code.file="$base64_zip" \
+    ${depend_version_list} 2>&1)
+  
+  if [[ $? -ne 0 ]]; then
+    error_exit "Failed to create function.\nFull output: $create_function_output"
+  else
+    info_msg "The function ${FUNC_NAME} has been created successfully."
+  fi
+
+else
+
+
+  # Update the function code
+  info_msg "${BLUE}Updating function code${NC}"
+  FUNCTION_URN="urn:fss:$REGION:$PROJECT_ID:function:default:$FUNC_NAME:latest"
+
+  command_output=$(hcloud FunctionGraph UpdateFunctionCode \
+          --cli-region=${REGION} \
+          --code_type="zip" \
+          --function_urn=${FUNCTION_URN} \
+          --project_id=${PROJECT_ID} \
+          --func_code.file="$base64_zip" \
+          --code_filename="function.zip" \
+          ${depend_version_list} 2>&1)
+
+  debug "KooCLI UpdateFunctionCode Command:\n$command_output"
+  # Check if the command was successful
+  if [[ $? -ne 0 ]]; then
+    error_exit "Failed to update function code.\nFull output: $command_output"
+  else
+    # Check if jq is installed to parse the error message
+    if command -v jq &> /dev/null; then
+      error_code=$(echo "$command_output" | jq -r '.error_code // empty' 2>/dev/null)
+      
+      if [[ ! -z "$error_code" ]]; then
+        error_msg=$(echo "$command_output" | jq -r '.error_msg // empty' 2>/dev/null)
+        error_exit "Failed to update function code.\n\tError Code: $error_code\n\tError Message: $error_msg"
+      else
+        info_msg "${BLUE}Function code updated."
+      fi
+    else
+      info_msg "Function code updated (jq is not installed for additional error checking)."
+    fi
+  fi
+  
 fi
 
 
