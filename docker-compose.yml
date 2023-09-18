@@ -12,12 +12,13 @@ services:
       - ACCESS_KEY=
       - SECRET_KEY=
       - REGION=
-      - PROJECT_ID=
+      - PROJECT=
       - FUNC_NAME=
       - DEPENDENCIES=
       - HANDLER=
       - RUNTIME=
       - MEMORY_SIZE=
       - TIMEOUT=
+      - FUNCTION_FOLDER=
     env_file:
       - .env
