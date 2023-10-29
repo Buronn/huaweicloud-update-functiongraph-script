@@ -38,22 +38,23 @@ sequenceDiagram
 ## Environment Variables
 
 
-| Variable            | Type       | Example                   | Description                                                                                       |
-|---------------------|------------|---------------------------|---------------------------------------------------------------------------------------------------|
-| `FUNC_NAME`         | Mandatory  | `myFunction`              | The name of the function.                                                                          |
-| `REGION`            | Mandatory  | `la-south-2`              | The region where the function resides.                                                             |
-| `PROJECT`           | Mandatory  | `123456789`               | Your Huawei Cloud Project ID.                                                                      |
-| `DEPENDENCIES`      | Optional   | `lib1,lib2,lib3`          | A comma-separated list of private dependencies the function needs. They must exist in your Huawei Cloud dependency list; the script will use the first version.|
-| `ACCESS_KEY`        | Mandatory  | `AbcD1234EfgH`            | Your Huawei Cloud access key.                                                                      |
-| `SECRET_KEY`        | Mandatory  | `XyZ0987WvU`              | Your Huawei Cloud secret key.                                                                      |
-| `HANDLER`           | Mandatory  | `index.py`                | The function handler.                                                                              |
-| `MEMORY_SIZE`       | Mandatory  | `256`                     | The memory size allocated for the function.                                                        |
-| `RUNTIME`           | Mandatory  | `Python3.6`               | The runtime environment for the function (e.g., Python3.6).                                        |
-| `TIMEOUT`           | Mandatory  | `30`                      | The timeout for the function execution.                                                            |
-| `FUNCTIONGRAPH_*`   | Optional   | `FUNCTIONGRAPH_DEBUG=1`, `FUNCTIONGRAPH_PORT=3000` | Environment variables starting with "FUNCTIONGRAPH_" will be used as function environment parameters.|
-| `AGENCY_NAME`       | Optional   | `MyAgency`                | The name of the agency role with permissions.                                                      |
-| `DEBUG`             | Optional   | `true` or `false`         | Enables or disables debug mode.                                                                    |
-| `FUNCTION_FOLDER`   | Optional   | `/path/to/func`           | Path to the function folder.                                                                       |
+| Variable           | Type       | Example                               | Description                                                                                                         |
+|--------------------|------------|---------------------------------------|---------------------------------------------------------------------------------------------------------------------|
+| `FUNC_NAME`        | Mandatory  | `myFunction`                          | The name of the function.                                                                                           |
+| `REGION`           | Mandatory  | `la-south-2`                          | The region where the function resides.                                                                              |
+| `PROJECT`          | Mandatory  | `123456789`                           | Your Huawei Cloud Project ID.                                                                                       |
+| `DEPENDENCIES`     | Optional   | `lib1,lib2,lib3`                      | A comma-separated list of private dependencies the function needs. They must exist in your Huawei Cloud dependency list; the script will use the first version. |
+| `ACCESS_KEY`       | Mandatory  | `AbcD1234EfgH`                        | Your Huawei Cloud access key.                                                                                       |
+| `SECRET_KEY`       | Mandatory  | `XyZ0987WvU`                          | Your Huawei Cloud secret key.                                                                                       |
+| `HANDLER`          | Mandatory  | `index.py`                            | The function handler.                                                                                               |
+| `MEMORY_SIZE`      | Mandatory  | `256`                                 | The memory size allocated for the function.                                                                         |
+| `RUNTIME`          | Mandatory  | `Python3.6`                           | The runtime environment for the function (e.g., Python3.6).                                                         |
+| `TIMEOUT`          | Mandatory  | `30`                                  | The timeout for the function execution.                                                                             |
+| `FUNCTIONGRAPH_*`  | Optional   | `FUNCTIONGRAPH_DEBUG=1`, `FUNCTIONGRAPH_PORT=3000` | Environment variables starting with "FUNCTIONGRAPH_" will be used as function environment parameters.                |
+| `AGENCY_NAME`      | Optional   | `MyAgency`                            | The name of the agency role with permissions.                                                                       |
+| `SUBNET_ID`        | Optional   | `123456789`                           | Subnet ID of the VPC if needed.                                                                                     |
+| `DEBUG`            | Optional   | `true` or `false`                     | Enables or disables debug mode.                                                                                     |
+| `FUNCTION_FOLDER`  | Optional   | `/path/to/func`                       | Path to the function folder.                                                                                        |
 
 
 
