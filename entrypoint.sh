@@ -169,7 +169,7 @@ if [ $? -eq 1 ]; then
     --project_id=${PROJECT_ID} \
     --runtime=${RUNTIME} \
     --timeout=${TIMEOUT} \
-    --app_xrole=${AGENCY_NAME} \
+    --xrole=${AGENCY_NAME} \
     --code_filename="function.zip" \
     --func_code.file="$base64_zip" \
     ${depend_version_list} 2>&1)
@@ -256,7 +256,44 @@ for key in "${!user_data_json_array[@]}"; do
 done
 user_data_json+="}"
 
+FUNCTION_URN="urn:fss:$REGION:$PROJECT_ID:function:default:$FUNC_NAME:latest"
+
+if [ -n "$SUBNET_ID" ]; then
+    info_msg "Fetching subnet data from $SUBNET_ID"
+    subnet_data=$(hcloud vpc ShowSubnet --subnet_id=$SUBNET_ID)
+    info_msg "KooCLI ShowSubnet Command:\n$subnet_data"
+    cidr=$(echo "$subnet_data" | jq -r '.subnet.cidr')
+    gateway=$(echo "$subnet_data" | jq -r '.subnet.gateway_ip')
+    subnet_id=$(echo "$subnet_data" | jq -r '.subnet.id')
+    subnet_name=$(echo "$subnet_data" | jq -r '.subnet.name')
+    vpc_id=$(echo "$subnet_data" | jq -r '.subnet.vpc_id')
+    vpc_name=$(echo "$subnet_data" | jq -r '.subnet.vpc_id')  # Assuming vpc_id is vpc_name as it's not available in the example
+    func_vpc="--func_vpc.cidr=$cidr --func_vpc.gateway=$gateway --func_vpc.subnet_id=$subnet_id --func_vpc.subnet_name=$subnet_name --func_vpc.vpc_id=$vpc_id --func_vpc.vpc_name=$vpc_name"
+    info_msg "func_vpc: $func_vpc"
+else
+    func_vpc=""
+fi
+
+if [ -n "$INITIALIZER_HANDLER" ]; then
+    initializer="--initializer_handler=$INITIALIZER_HANDLER --initializer_timeout=$INITIALIZER_TIMEOUT"
+    info_msg "initializer: $initializer"
+else
+    initializer=""
+fi
+
 # Execute the command and store its output
+info_msg "Command to execute: hcloud FunctionGraph UpdateFunctionConfig \
+   --func_name=${FUNC_NAME} \
+   --function_urn=${FUNCTION_URN} \
+   --handler=${HANDLER} \
+   --memory_size=${MEMORY_SIZE} \
+   --project_id=${PROJECT_ID} \
+   --runtime=${RUNTIME} \
+   --timeout=${TIMEOUT} \
+   --xrole=${AGENCY_NAME} \
+   ${func_vpc} \
+   ${initializer} \
+   --user_data=\"$user_data_json\""
 command_output=$(hcloud FunctionGraph UpdateFunctionConfig \
    --func_name=${FUNC_NAME} \
    --function_urn=${FUNCTION_URN} \
@@ -265,7 +302,9 @@ command_output=$(hcloud FunctionGraph UpdateFunctionConfig \
    --project_id=${PROJECT_ID} \
    --runtime=${RUNTIME} \
    --timeout=${TIMEOUT} \
-   --app_xrole=${AGENCY_NAME} \
+   --xrole=${AGENCY_NAME} \
+   ${func_vpc} \
+   ${initializer} \
    --user_data="$user_data_json" 2>&1)
 
 debug "KooCLI UpdateFunctionConfig Command:\n$command_output"
